@@ -11,7 +11,7 @@ public class JDBCConfigaration {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         loadAndRegisterDriver();
         createTheConnection();
-        createTheStatemnt();
+        createTheStatement();
         executeTheQuery();
         closeTheConnection();
     }
@@ -21,13 +21,14 @@ public class JDBCConfigaration {
     }
 
     private static void executeTheQuery() throws SQLException {
-        String sql = "INSERT INTO customers(id, name, address, tel) VALUES('C005', 'Kithmi', 'Jaffna', '0714567685')";
+        CustomerFormController customerFormController = new CustomerFormController();
+        String sql = "INSERT INTO customers(id, name, address, tel) VALUES('C001', 'Kithmi', 'Jaffna', '0714567685')";
 
         int affectedRows = statement.executeUpdate(sql);
         System.out.println("affected rows: " + affectedRows);
     }
 
-    private static void createTheStatemnt() throws SQLException {
+    private static void createTheStatement() throws SQLException {
         statement = connection.createStatement();
     }
 
